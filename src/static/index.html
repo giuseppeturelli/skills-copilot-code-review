@@ -12,9 +12,7 @@
     />
   </head>
   <body>
-    <div class="announcement-banner">
-    📢 Activity registration is open until the end of the month. Don't lose your spot!
-    </div>
+    <div id="announcement-container"></div>
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
@@ -27,10 +25,40 @@
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
             <button id="logout-button">Logout</button>
+            <button id="manage-announcements-btn" class="icon-button" style="margin-left:10px;display:none;">
+              <span>📢</span> Manage Announcements
+            </button>
           </div>
         </div>
       </div>
     </header>
+    <!-- Announcement Management Modal -->
+    <div id="announcement-modal" class="modal hidden">
+      <div class="modal-content" style="max-width:500px;">
+        <span class="close-announcement-modal" style="position:absolute;right:12px;top:8px;font-size:18px;cursor:pointer;">&times;</span>
+        <h3>Manage Announcements</h3>
+        <div id="announcement-list"></div>
+        <hr/>
+        <form id="announcement-form">
+          <div class="form-group">
+            <label for="announcement-message">Message:</label>
+            <input type="text" id="announcement-message" required maxlength="200" placeholder="Announcement message..." />
+          </div>
+          <div class="form-group">
+            <label for="announcement-start">Start Date (optional):</label>
+            <input type="datetime-local" id="announcement-start" />
+          </div>
+          <div class="form-group">
+            <label for="announcement-expiration">Expiration Date:</label>
+            <input type="datetime-local" id="announcement-expiration" required />
+          </div>
+          <input type="hidden" id="announcement-id" />
+          <button type="submit" id="save-announcement-btn">Save Announcement</button>
+          <button type="button" id="cancel-edit-btn" style="display:none;">Cancel</button>
+        </form>
+        <div id="announcement-modal-message" class="message hidden"></div>
+      </div>
+    </div
 
     <main>
       <section id="activities-container">
